@@ -7,7 +7,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeOrmConfig),
-    AuthModule
+    AuthModule,
   ]
 })
 export class AppModule {}

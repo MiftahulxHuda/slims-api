@@ -14,6 +14,7 @@ async function bootstrap() {
     .setTitle('SLiMS Bulian API')
     .setDescription('The API focused in feature bibliography')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

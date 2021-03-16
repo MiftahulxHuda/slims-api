@@ -3,3 +3,6 @@ db:
   username: 'root'
   password: ''
   synchronize: false
+
+jwt:
+  secret: 'topSecret51'
