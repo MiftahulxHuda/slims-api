@@ -17,9 +17,9 @@ export class MST_Content_Type extends BaseEntity {
     @Column()
     code2: string;
 
-    @Column()
+    @Column({ select: false })
     input_date: string;
 
-    @Column()
+    @Column({ select: false })
     last_update: string;
 }

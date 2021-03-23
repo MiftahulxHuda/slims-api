@@ -6,6 +6,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { BibliosModule } from './biblios/biblios.module';
 import { MSTAuthorsModule } from './mst_authors/mst_authors.module';
 import { MSTGMDsModule } from './mst_gmds/mst_gmds.module';
+import { MSTContentTypesModule } from './mst_content_types/mst_content_types.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { MSTGMDsModule } from './mst_gmds/mst_gmds.module';
     AuthModule,
     BibliosModule,
     MSTAuthorsModule,
-    MSTGMDsModule
+    MSTGMDsModule,
+    MSTContentTypesModule
   ]
 })
 export class AppModule {}
