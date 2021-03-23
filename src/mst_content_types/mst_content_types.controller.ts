@@ -1,5 +1,5 @@
-import { Controller, Get, UseGuards, Param } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Query } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -16,7 +16,8 @@ export class MSTContentTypesController {
   ) { }
 
   @Get('/:content_type')
-  getMSTContentTypesByContentType(@Param('content_type') content_type: string): Promise<MST_Content_Type[]> {
+  @ApiQuery({ name: 'content_type', required: false })
+  getMSTContentTypesByContentType(@Query('content_type') content_type: string): Promise<MST_Content_Type[]> {
     return this.MSTContentTypesService.getMSTContentTypesByContentType(content_type);
   }
 }
