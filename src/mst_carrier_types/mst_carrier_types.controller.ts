@@ -1,5 +1,5 @@
-import { Controller, Get, UseGuards, Param } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Query } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -16,7 +16,8 @@ export class MSTCarrierTypesController {
   ) { }
 
   @Get('/:carrier_type')
-  getMSTCarrierTypesByCarrierType(@Param('carrier_type') carrier_type: string): Promise<MST_Carrier_Type[]> {
+  @ApiQuery({ name: 'carrier_type', required: false })
+  getMSTCarrierTypesByCarrierType(@Query('carrier_type') carrier_type: string): Promise<MST_Carrier_Type[]> {
     return this.MSTCarrierTypesService.getMSTCarrierTypesByCarrierType(carrier_type);
   }
 }
