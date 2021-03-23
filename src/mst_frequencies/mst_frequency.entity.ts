@@ -31,9 +31,9 @@ export class MST_Frequency extends BaseEntity {
     })
     time_unit: TimeUnit;
 
-    @Column()
+    @Column({ select: false })
     input_date: string;
 
-    @Column()
+    @Column({ select: false })
     last_update: string;
 }
