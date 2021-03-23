@@ -13,6 +13,7 @@ import { MSTFrequenciesModule } from './mst_frequencies/mst_frequencies.module';
 import { MSTPublishersModule } from './mst_publishers/mst_publishers.module';
 import { MSTLanguagesModule } from './mst_languages/mst_languages.module';
 import { MSTTopicsModule } from './mst_topics/mst_topics.module';
+import { BiblioAuthorsModule } from './biblio_authors/biblio_authors.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { MSTTopicsModule } from './mst_topics/mst_topics.module';
     MSTFrequenciesModule,
     MSTPublishersModule,
     MSTLanguagesModule,
-    MSTTopicsModule
+    MSTTopicsModule,
+    BiblioAuthorsModule
   ]
 })
 export class AppModule {}
