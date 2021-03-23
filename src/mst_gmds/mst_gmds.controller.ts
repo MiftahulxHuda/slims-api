@@ -1,5 +1,5 @@
-import { Controller, Get, UseGuards, Param } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Query } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -16,7 +16,8 @@ export class MSTGMDsController {
   ) { }
 
   @Get('/:gmd_name')
-  getMSTGMDsByName(@Param('gmd_name') gmd_name: string): Promise<MST_GMD[]> {
+  @ApiQuery({ name: 'gmd_name', required: false })
+  getMSTGMDsByName(@Query('gmd_name') gmd_name: string): Promise<MST_GMD[]> {
     return this.MSTGMDsService.getMSTGMDsByName(gmd_name);
   }
 }
