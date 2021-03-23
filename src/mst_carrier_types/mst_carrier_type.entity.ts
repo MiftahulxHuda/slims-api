@@ -17,9 +17,9 @@ export class MST_Carrier_Type extends BaseEntity {
     @Column()
     code2: string;
 
-    @Column()
+    @Column({ select: false })
     input_date: string;
 
-    @Column()
+    @Column({ select: false })
     last_update: string;
 }
