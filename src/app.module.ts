@@ -7,6 +7,7 @@ import { BibliosModule } from './biblios/biblios.module';
 import { MSTAuthorsModule } from './mst_authors/mst_authors.module';
 import { MSTGMDsModule } from './mst_gmds/mst_gmds.module';
 import { MSTContentTypesModule } from './mst_content_types/mst_content_types.module';
+import { MSTMediaTypesModule } from './mst_media_types/mst_media_types.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { MSTContentTypesModule } from './mst_content_types/mst_content_types.mod
     BibliosModule,
     MSTAuthorsModule,
     MSTGMDsModule,
-    MSTContentTypesModule
+    MSTContentTypesModule,
+    MSTMediaTypesModule
   ]
 })
 export class AppModule {}
