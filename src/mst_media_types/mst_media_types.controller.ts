@@ -1,5 +1,5 @@
-import { Controller, Get, UseGuards, Param } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Query } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -16,7 +16,8 @@ export class MSTMediaTypesController {
   ) { }
 
   @Get('/:media_type')
-  getMSTMediaTypesByMediaType(@Param('media_type') media_type: string): Promise<MST_Media_Type[]> {
+  @ApiQuery({ name: 'media_type', required: false })
+  getMSTMediaTypesByMediaType(@Query('media_type') media_type: string): Promise<MST_Media_Type[]> {
     return this.MSTMediaTypesService.getMSTMediaTypesByMediaType(media_type);
   }
 }
