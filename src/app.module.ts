@@ -12,6 +12,7 @@ import { MSTCarrierTypesModule } from './mst_carrier_types/mst_carrier_types.mod
 import { MSTFrequenciesModule } from './mst_frequencies/mst_frequencies.module';
 import { MSTPublishersModule } from './mst_publishers/mst_publishers.module';
 import { MSTLanguagesModule } from './mst_languages/mst_languages.module';
+import { MSTTopicsModule } from './mst_topics/mst_topics.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { MSTLanguagesModule } from './mst_languages/mst_languages.module';
     MSTCarrierTypesModule,
     MSTFrequenciesModule,
     MSTPublishersModule,
-    MSTLanguagesModule
+    MSTLanguagesModule,
+    MSTTopicsModule
   ]
 })
 export class AppModule {}
