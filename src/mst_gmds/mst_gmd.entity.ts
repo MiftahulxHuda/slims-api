@@ -17,9 +17,9 @@ export class MST_GMD extends BaseEntity {
   @Column()
   icon_image: string;
 
-  @Column()
+  @Column({ select: false })
   input_date: string;
 
-  @Column()
+  @Column({ select: false })
   last_update: string;
 }
