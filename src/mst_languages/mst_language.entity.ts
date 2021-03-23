@@ -11,9 +11,9 @@ export class MST_Language extends BaseEntity {
   @Column()
   language_name: string;
 
-  @Column()
+  @Column({ select: false })
   input_date: string;
 
-  @Column()
+  @Column({ select: false })
   last_update: string;
 }

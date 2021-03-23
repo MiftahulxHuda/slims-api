@@ -11,6 +11,7 @@ import { MSTMediaTypesModule } from './mst_media_types/mst_media_types.module';
 import { MSTCarrierTypesModule } from './mst_carrier_types/mst_carrier_types.module';
 import { MSTFrequenciesModule } from './mst_frequencies/mst_frequencies.module';
 import { MSTPublishersModule } from './mst_publishers/mst_publishers.module';
+import { MSTLanguagesModule } from './mst_languages/mst_languages.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { MSTPublishersModule } from './mst_publishers/mst_publishers.module';
     MSTMediaTypesModule,
     MSTCarrierTypesModule,
     MSTFrequenciesModule,
-    MSTPublishersModule
+    MSTPublishersModule,
+    MSTLanguagesModule
   ]
 })
 export class AppModule {}
