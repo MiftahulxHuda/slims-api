@@ -10,6 +10,7 @@ import { MSTContentTypesModule } from './mst_content_types/mst_content_types.mod
 import { MSTMediaTypesModule } from './mst_media_types/mst_media_types.module';
 import { MSTCarrierTypesModule } from './mst_carrier_types/mst_carrier_types.module';
 import { MSTFrequenciesModule } from './mst_frequencies/mst_frequencies.module';
+import { MSTPublishersModule } from './mst_publishers/mst_publishers.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { MSTFrequenciesModule } from './mst_frequencies/mst_frequencies.module';
     MSTContentTypesModule,
     MSTMediaTypesModule,
     MSTCarrierTypesModule,
-    MSTFrequenciesModule
+    MSTFrequenciesModule,
+    MSTPublishersModule
   ]
 })
 export class AppModule {}
