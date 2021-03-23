@@ -9,7 +9,11 @@ export class MSTAuthorRepository extends Repository<MST_Author> {
 
     async getMSTAuthorsByName(author_name: string): Promise<MST_Author[]> {
         try {
-            const query = await this.find({ where: { author_name: Like(`%${author_name}%`) } });
+            const query = await this.find({
+                where: {
+                    author_name: Like(`%${author_name ? author_name : ''}%`)
+                }
+            });
             return query;
         } catch (error) {
             throw new InternalServerErrorException();

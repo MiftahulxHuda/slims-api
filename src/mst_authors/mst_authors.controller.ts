@@ -1,5 +1,5 @@
-import { Controller, Get, UseGuards, Param, Post, Body, UsePipes, ValidationPipe } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Post, Body, UsePipes, ValidationPipe, Query } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
@@ -17,7 +17,8 @@ export class MSTAuthorsController {
   ) { }
 
   @Get('/:author_name')
-  getMSTAuthorsByName(@Param('author_name') author_name: string): Promise<MST_Author[]> {
+  @ApiQuery({ name: 'author_name', required: false })
+  getMSTAuthorsByName(@Query('author_name') author_name: string): Promise<MST_Author[]> {
     return this.MSTAuthorsService.getMSTAuthorsByName(author_name);
   }
 
