@@ -24,6 +24,9 @@ export class Item extends BaseEntity {
     received_date: string;
 
     @Column()
+    supplier_id: string;
+
+    @Column()
     order_no: string;
 
     @Column()
@@ -39,7 +42,7 @@ export class Item extends BaseEntity {
     site: string;
 
     @Column()
-    source: string;
+    source: number;
 
     @Column()
     invoice: string;
@@ -48,17 +51,17 @@ export class Item extends BaseEntity {
     price: number;
 
     @Column()
-    price_currency: number;
+    price_currency: string;
 
     @Column()
     invoice_date: string;
 
-    @Column()
+    @Column({ select: false })
     input_date: string;
 
-    @Column()
+    @Column({ select: false })
     last_update: string;
 
-    @Column()
-    uid: string;
+    @Column({ select: false })
+    uid: number;
 }

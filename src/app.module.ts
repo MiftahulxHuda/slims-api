@@ -19,6 +19,7 @@ import { MSTLocationsModule } from './mst_locations/mst_locations.module';
 import { MSTCollTypesModule } from './mst_coll_types/mst_coll_types.module';
 import { MSTItemStatusesModule } from './mst_item_statuses/mst_item_statuses.module';
 import { MSTSuppliersModule } from './mst_suppliers/mst_suppliers.module';
+import { ItemsModule } from './items/items.module';
 
 @Module({
   imports: [
@@ -39,7 +40,8 @@ import { MSTSuppliersModule } from './mst_suppliers/mst_suppliers.module';
     MSTLocationsModule,
     MSTCollTypesModule,
     MSTItemStatusesModule,
-    MSTSuppliersModule
+    MSTSuppliersModule,
+    ItemsModule
   ]
 })
 export class AppModule {}
