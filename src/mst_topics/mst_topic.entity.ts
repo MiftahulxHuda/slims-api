@@ -1,5 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Biblio_Topic } from 'src/biblio_topics/biblio_topic.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 export enum TopicType {
     TOPIC = "t",
@@ -13,7 +12,6 @@ export enum TopicType {
 @Entity('mst_topic')
 export class MST_Topic extends BaseEntity {
     @PrimaryGeneratedColumn()
-    @OneToMany(() => Biblio_Topic, biblio_topic => biblio_topic.topic_id)
     topic_id: number;
 
     @Column()

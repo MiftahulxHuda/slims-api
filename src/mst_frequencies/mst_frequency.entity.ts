@@ -1,6 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-
-import { Biblio } from 'src/biblios/biblio.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 export enum TimeUnit {
     DAY = "day",
@@ -12,7 +10,6 @@ export enum TimeUnit {
 @Entity('mst_frequency')
 export class MST_Frequency extends BaseEntity {
     @PrimaryGeneratedColumn()
-    @OneToMany(() => Biblio, biblio => biblio.mst_gmd)
     frequency_id: number;
 
     @Column()

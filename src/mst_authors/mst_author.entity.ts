@@ -1,7 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-
-import { Biblio_Author } from 'src/biblio_authors/biblio_author.entity';
-import { CustomDate } from 'src/utils/custom-date';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 export enum AuthorityType {
     PERSONAL_NAME = "p",
@@ -12,7 +9,6 @@ export enum AuthorityType {
 @Entity('mst_author')
 export class MST_Author extends BaseEntity {
     @PrimaryGeneratedColumn()
-    @OneToMany(() => Biblio_Author, biblio_author => biblio_author.author_id)
     author_id: number;
 
     @Column()

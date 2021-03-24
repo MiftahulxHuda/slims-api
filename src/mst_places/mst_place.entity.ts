@@ -1,11 +1,8 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-
-import { Biblio } from 'src/biblios/biblio.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('mst_place')
 export class MST_Place extends BaseEntity {
   @PrimaryGeneratedColumn()
-  @OneToMany(() => Biblio, biblio => biblio.mst_place)
   place_id: number;
 
   @Column()
