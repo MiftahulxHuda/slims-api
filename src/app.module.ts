@@ -15,6 +15,7 @@ import { MSTLanguagesModule } from './mst_languages/mst_languages.module';
 import { MSTTopicsModule } from './mst_topics/mst_topics.module';
 import { BiblioAuthorsModule } from './biblio_authors/biblio_authors.module';
 import { BiblioTopicsModule } from './biblio_topics/biblio_topics.module';
+import { MSTLocationsModule } from './mst_locations/mst_locations.module';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { BiblioTopicsModule } from './biblio_topics/biblio_topics.module';
     MSTLanguagesModule,
     MSTTopicsModule,
     BiblioAuthorsModule,
-    BiblioTopicsModule
+    BiblioTopicsModule,
+    MSTLocationsModule
   ]
 })
 export class AppModule {}
