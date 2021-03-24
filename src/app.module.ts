@@ -18,6 +18,7 @@ import { BiblioTopicsModule } from './biblio_topics/biblio_topics.module';
 import { MSTLocationsModule } from './mst_locations/mst_locations.module';
 import { MSTCollTypesModule } from './mst_coll_types/mst_coll_types.module';
 import { MSTItemStatusesModule } from './mst_item_statuses/mst_item_statuses.module';
+import { MSTSuppliersModule } from './mst_suppliers/mst_suppliers.module';
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { MSTItemStatusesModule } from './mst_item_statuses/mst_item_statuses.mod
     BiblioTopicsModule,
     MSTLocationsModule,
     MSTCollTypesModule,
-    MSTItemStatusesModule
+    MSTItemStatusesModule,
+    MSTSuppliersModule
   ]
 })
 export class AppModule {}
