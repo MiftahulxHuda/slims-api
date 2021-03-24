@@ -17,6 +17,7 @@ import { BiblioAuthorsModule } from './biblio_authors/biblio_authors.module';
 import { BiblioTopicsModule } from './biblio_topics/biblio_topics.module';
 import { MSTLocationsModule } from './mst_locations/mst_locations.module';
 import { MSTCollTypesModule } from './mst_coll_types/mst_coll_types.module';
+import { MSTItemStatusesModule } from './mst_item_statuses/mst_item_statuses.module';
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import { MSTCollTypesModule } from './mst_coll_types/mst_coll_types.module';
     BiblioAuthorsModule,
     BiblioTopicsModule,
     MSTLocationsModule,
-    MSTCollTypesModule
+    MSTCollTypesModule,
+    MSTItemStatusesModule
   ]
 })
 export class AppModule {}
