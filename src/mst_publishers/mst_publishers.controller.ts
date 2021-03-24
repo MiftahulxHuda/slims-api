@@ -16,7 +16,7 @@ export class MSTPublishersController {
     private MSTPublishersService: MSTPublishersService
   ) { }
 
-  @Get('/:publisher_name')
+  @Get('publisher_name/:publisher_name')
   @ApiQuery({ name: 'publisher_name', required: false })
   getMSTPublishersByName(@Query('publisher_name') publisher_name: string): Promise<MST_Publisher[]> {
     return this.MSTPublishersService.getMSTPublishersByName(publisher_name);

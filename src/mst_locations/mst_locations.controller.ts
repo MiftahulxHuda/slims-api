@@ -15,7 +15,7 @@ export class MSTLocationsController {
     private MSTLocationsService: MSTLocationsService
   ) { }
 
-  @Get('/:location_name')
+  @Get('location_name/:location_name')
   @ApiQuery({ name: 'location_name', required: false })
   getMSTLocationsByLocationName(@Query('location_name') location_name: string): Promise<MST_Location[]> {
     return this.MSTLocationsService.getMSTLocationsByLocationName(location_name);

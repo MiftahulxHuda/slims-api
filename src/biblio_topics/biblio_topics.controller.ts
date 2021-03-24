@@ -16,7 +16,7 @@ export class BiblioTopicsController {
         private BiblioTopicsService: BiblioTopicsService
     ) { }
 
-    @Get('/:biblio_id')
+    @Get('biblio_id/:biblio_id')
     getBiblioTopicsByBiblioId(@Param('biblio_id') biblio_id: number): Promise<Biblio_Topic[]> {
         return this.BiblioTopicsService.getBiblioTopicsByBiblioId(biblio_id);
     }
@@ -28,7 +28,7 @@ export class BiblioTopicsController {
         return this.BiblioTopicsService.createBulkBiblioTopic(createBulkBiblioTopicDto);
     }
 
-    @Delete('/:biblio_id/:topic_id')
+    @Delete('biblio_id/:biblio_id/topic_id/:topic_id')
     deleteBiblioTopicByBiblioIdAndTopicId(
         @Param('biblio_id', ParseIntPipe) biblio_id: number,
         @Param('topic_id', ParseIntPipe) topic_id: number

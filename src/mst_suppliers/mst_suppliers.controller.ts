@@ -15,7 +15,7 @@ export class MSTSuppliersController {
     private MSTSuppliersService: MSTSuppliersService
   ) { }
 
-  @Get('/:supplier_name')
+  @Get('supplier_name/:supplier_name')
   @ApiQuery({ name: 'supplier_name', required: false })
   getMSTSuppliersBySupplierName(@Query('supplier_name') supplier_name: string): Promise<MST_Supplier[]> {
     return this.MSTSuppliersService.getMSTSuppliersBySupplierName(supplier_name);

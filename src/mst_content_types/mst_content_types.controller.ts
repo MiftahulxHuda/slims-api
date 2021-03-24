@@ -15,7 +15,7 @@ export class MSTContentTypesController {
     private MSTContentTypesService: MSTContentTypesService
   ) { }
 
-  @Get('/:content_type')
+  @Get('content_type/:content_type')
   @ApiQuery({ name: 'content_type', required: false })
   getMSTContentTypesByContentType(@Query('content_type') content_type: string): Promise<MST_Content_Type[]> {
     return this.MSTContentTypesService.getMSTContentTypesByContentType(content_type);

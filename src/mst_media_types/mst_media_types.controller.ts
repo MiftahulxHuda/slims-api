@@ -15,7 +15,7 @@ export class MSTMediaTypesController {
     private MSTMediaTypesService: MSTMediaTypesService
   ) { }
 
-  @Get('/:media_type')
+  @Get('media_type/:media_type')
   @ApiQuery({ name: 'media_type', required: false })
   getMSTMediaTypesByMediaType(@Query('media_type') media_type: string): Promise<MST_Media_Type[]> {
     return this.MSTMediaTypesService.getMSTMediaTypesByMediaType(media_type);

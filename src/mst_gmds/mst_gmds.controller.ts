@@ -15,7 +15,7 @@ export class MSTGMDsController {
     private MSTGMDsService: MSTGMDsService
   ) { }
 
-  @Get('/:gmd_name')
+  @Get('gmd_name/:gmd_name')
   @ApiQuery({ name: 'gmd_name', required: false })
   getMSTGMDsByName(@Query('gmd_name') gmd_name: string): Promise<MST_GMD[]> {
     return this.MSTGMDsService.getMSTGMDsByName(gmd_name);

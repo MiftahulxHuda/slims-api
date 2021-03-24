@@ -15,7 +15,7 @@ export class MSTFrequenciesController {
     private MSTFrequenciesService: MSTFrequenciesService
   ) { }
 
-  @Get('/:frequency')
+  @Get('frequency/:frequency')
   @ApiQuery({ name: 'frequency', required: false })
   getMSTFrequenciesByFrequency(@Query('frequency') frequency: string): Promise<MST_Frequency[]> {
     return this.MSTFrequenciesService.getMSTFrequenciesByFrequency(frequency);

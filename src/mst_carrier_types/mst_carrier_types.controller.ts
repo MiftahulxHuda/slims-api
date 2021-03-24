@@ -15,7 +15,7 @@ export class MSTCarrierTypesController {
     private MSTCarrierTypesService: MSTCarrierTypesService
   ) { }
 
-  @Get('/:carrier_type')
+  @Get('carrier_type/:carrier_type')
   @ApiQuery({ name: 'carrier_type', required: false })
   getMSTCarrierTypesByCarrierType(@Query('carrier_type') carrier_type: string): Promise<MST_Carrier_Type[]> {
     return this.MSTCarrierTypesService.getMSTCarrierTypesByCarrierType(carrier_type);

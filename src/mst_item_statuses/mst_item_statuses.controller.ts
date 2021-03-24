@@ -15,7 +15,7 @@ export class MSTItemStatusesController {
     private MSTItemStatusesService: MSTItemStatusesService
   ) { }
 
-  @Get('/:item_status_name')
+  @Get('item_status_name/:item_status_name')
   @ApiQuery({ name: 'item_status_name', required: false })
   getMSTItemStatusesByItemStatusName(@Query('item_status_name') item_status_name: string): Promise<MST_Item_Status[]> {
     return this.MSTItemStatusesService.getMSTItemStatusesByItemStatusName(item_status_name);

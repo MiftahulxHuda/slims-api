@@ -16,7 +16,7 @@ export class BiblioAuthorsController {
         private BiblioAuthorsService: BiblioAuthorsService
     ) { }
 
-    @Get('/:biblio_id')
+    @Get('biblio_id/:biblio_id')
     getBiblioAuthorsByBiblioId(@Param('biblio_id') biblio_id: number): Promise<Biblio_Author[]> {
         return this.BiblioAuthorsService.getBiblioAuthorsByBiblioId(biblio_id);
     }
@@ -28,7 +28,7 @@ export class BiblioAuthorsController {
         return this.BiblioAuthorsService.createBulkBiblioAuthor(createBulkBiblioAuthorDto);
     }
 
-    @Delete('/:biblio_id/:author_id')
+    @Delete('biblio_id/:biblio_id/author_id/:author_id')
     deleteBiblioAuthorByBiblioIdAndAuthorId(
         @Param('biblio_id', ParseIntPipe) biblio_id: number,
         @Param('author_id', ParseIntPipe) author_id: number

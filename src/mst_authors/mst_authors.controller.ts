@@ -16,7 +16,7 @@ export class MSTAuthorsController {
     private MSTAuthorsService: MSTAuthorsService
   ) { }
 
-  @Get('/:author_name')
+  @Get('author_name/:author_name')
   @ApiQuery({ name: 'author_name', required: false })
   getMSTAuthorsByName(@Query('author_name') author_name: string): Promise<MST_Author[]> {
     return this.MSTAuthorsService.getMSTAuthorsByName(author_name);

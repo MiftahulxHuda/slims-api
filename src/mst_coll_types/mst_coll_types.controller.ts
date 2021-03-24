@@ -15,7 +15,7 @@ export class MSTCollTypesController {
     private MSTCollTypesService: MSTCollTypesService
   ) { }
 
-  @Get('/:coll_type_name')
+  @Get('coll_type_name/:coll_type_name')
   @ApiQuery({ name: 'coll_type_name', required: false })
   getMSTCollTypesByCollTypeName(@Query('coll_type_name') coll_type_name: string): Promise<MST_Coll_Type[]> {
     return this.MSTCollTypesService.getMSTCollTypesByCollTypeName(coll_type_name);

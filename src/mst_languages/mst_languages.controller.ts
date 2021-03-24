@@ -15,7 +15,7 @@ export class MSTLanguagesController {
     private MSTLanguagesService: MSTLanguagesService
   ) { }
 
-  @Get('/:language_name')
+  @Get('language_name/:language_name')
   @ApiQuery({ name: 'language_name', required: false })
   getMSTLanguagesByLanguageName(@Query('language_name') language_name: string): Promise<MST_Language[]> {
     return this.MSTLanguagesService.getMSTLanguagesByLanguageName(language_name);
