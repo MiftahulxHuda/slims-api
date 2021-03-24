@@ -14,6 +14,7 @@ import { MSTPublishersModule } from './mst_publishers/mst_publishers.module';
 import { MSTLanguagesModule } from './mst_languages/mst_languages.module';
 import { MSTTopicsModule } from './mst_topics/mst_topics.module';
 import { BiblioAuthorsModule } from './biblio_authors/biblio_authors.module';
+import { BiblioTopicsModule } from './biblio_topics/biblio_topics.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { BiblioAuthorsModule } from './biblio_authors/biblio_authors.module';
     MSTPublishersModule,
     MSTLanguagesModule,
     MSTTopicsModule,
-    BiblioAuthorsModule
+    BiblioAuthorsModule,
+    BiblioTopicsModule
   ]
 })
 export class AppModule {}
