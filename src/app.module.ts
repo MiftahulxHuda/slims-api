@@ -20,6 +20,7 @@ import { MSTCollTypesModule } from './mst_coll_types/mst_coll_types.module';
 import { MSTItemStatusesModule } from './mst_item_statuses/mst_item_statuses.module';
 import { MSTSuppliersModule } from './mst_suppliers/mst_suppliers.module';
 import { ItemsModule } from './items/items.module';
+import { BiblioRelationsModule } from './biblio_relations/biblio_relations.module';
 
 @Module({
   imports: [
@@ -41,7 +42,8 @@ import { ItemsModule } from './items/items.module';
     MSTCollTypesModule,
     MSTItemStatusesModule,
     MSTSuppliersModule,
-    ItemsModule
+    ItemsModule,
+    BiblioRelationsModule
   ]
 })
 export class AppModule {}
