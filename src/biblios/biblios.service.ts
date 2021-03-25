@@ -13,6 +13,7 @@ import { Item } from 'src/items/item.entity';
 import { Loan_History } from 'src/loan_histories/loan_history.entity';
 import { Search_Biblio } from 'src/search_biblios/search_biblio.entity';
 import { Serial } from 'src/serials/serial.entity';
+import { CreateBiblioDto } from './dto/create-biblio.dto';
 
 @Injectable()
 export class BibliosService {
@@ -27,6 +28,10 @@ export class BibliosService {
 
   async getBiblioById(biblio_id: number): Promise<Biblio> {
     return this.biblioRepository.getBiblioById(biblio_id);
+  }
+
+  async createBiblio(createBiblioDto: CreateBiblioDto): Promise<Biblio> {
+    return this.biblioRepository.createBiblio(createBiblioDto);
   }
 
   async deleteBiblio(id: number): Promise<void> {

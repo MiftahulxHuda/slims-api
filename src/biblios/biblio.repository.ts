@@ -10,6 +10,7 @@ import { MST_Frequency } from 'src/mst_frequencies/mst_frequency.entity';
 import { MST_Content_Type } from 'src/mst_content_types/mst_content_type.entity';
 import { MST_Media_Type } from 'src/mst_media_types/mst_media_type.entity';
 import { MST_Carrier_Type } from 'src/mst_carrier_types/mst_carrier_type.entity';
+import { CreateBiblioDto } from './dto/create-biblio.dto';
 
 @EntityRepository(Biblio)
 export class BiblioRepository extends Repository<Biblio> {
@@ -69,6 +70,77 @@ export class BiblioRepository extends Repository<Biblio> {
     } catch (error) {
       throw new InternalServerErrorException();
     }
+  }
+
+  async createBiblio(createBiblioDto: CreateBiblioDto): Promise<Biblio> {
+    const {
+      gmd_id,
+      title,
+      sor,
+      edition,
+      isbn_issn,
+      publisher_id,
+      publish_year,
+      collation,
+      series_title,
+      call_number,
+      language_id,
+      source,
+      publish_place_id,
+      classification,
+      notes,
+      image,
+      file_att,
+      opac_hide,
+      promoted,
+      labels,
+      frequency_id,
+      spec_detail_info,
+      content_type_id,
+      media_type_id,
+      carrier_type_id,
+      input_date,
+      last_update,
+      uid
+    } = createBiblioDto;
+
+    const biblio = new Biblio();
+    biblio.gmd_id = gmd_id;
+    biblio.title = title;
+    biblio.sor = sor;
+    biblio.edition = edition;
+    biblio.isbn_issn = isbn_issn;
+    biblio.publisher_id = publisher_id;
+    biblio.publish_year = publish_year;
+    biblio.collation = collation;
+    biblio.series_title = series_title;
+    biblio.call_number = call_number;
+    biblio.language_id = language_id;
+    biblio.source = source;
+    biblio.publish_place_id = publish_place_id;
+    biblio.classification = classification;
+    biblio.notes = notes;
+    biblio.image = image;
+    biblio.file_att = file_att;
+    biblio.opac_hide = opac_hide;
+    biblio.promoted = promoted;
+    biblio.labels = labels;
+    biblio.frequency_id = frequency_id;
+    biblio.spec_detail_info = spec_detail_info;
+    biblio.content_type_id = content_type_id;
+    biblio.media_type_id = media_type_id;
+    biblio.carrier_type_id = carrier_type_id;
+    biblio.input_date = input_date;
+    biblio.last_update = last_update;
+    biblio.uid = uid;
+
+    try {
+      await this.save(biblio);
+    } catch (error) {
+      throw new InternalServerErrorException();
+    }
+
+    return biblio;
   }
 
   async deleteQueryBuilder(entity, fields) {
