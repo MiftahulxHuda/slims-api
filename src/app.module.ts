@@ -21,6 +21,7 @@ import { MSTItemStatusesModule } from './mst_item_statuses/mst_item_statuses.mod
 import { MSTSuppliersModule } from './mst_suppliers/mst_suppliers.module';
 import { ItemsModule } from './items/items.module';
 import { BiblioRelationsModule } from './biblio_relations/biblio_relations.module';
+import { SearchBibliosModule } from './search_biblios/search_biblios.module';
 
 @Module({
   imports: [
@@ -43,7 +44,8 @@ import { BiblioRelationsModule } from './biblio_relations/biblio_relations.modul
     MSTItemStatusesModule,
     MSTSuppliersModule,
     ItemsModule,
-    BiblioRelationsModule
+    BiblioRelationsModule,
+    SearchBibliosModule
   ]
 })
 export class AppModule {}

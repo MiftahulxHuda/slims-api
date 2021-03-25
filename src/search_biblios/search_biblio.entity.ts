@@ -12,9 +12,6 @@ export class Search_Biblio extends BaseEntity {
   edition: string;
 
   @Column()
-  sor: string;
-
-  @Column()
   isbn_issn: string;
 
   @Column()
@@ -27,7 +24,7 @@ export class Search_Biblio extends BaseEntity {
   publisher: string;
 
   @Column()
-  publisher_place: string;
+  publish_place: string;
 
   @Column()
   language: string;
