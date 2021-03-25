@@ -23,6 +23,7 @@ import { ItemsModule } from './items/items.module';
 import { BiblioRelationsModule } from './biblio_relations/biblio_relations.module';
 import { SearchBibliosModule } from './search_biblios/search_biblios.module';
 import { FilesModule } from './files/files.module';
+import { BiblioAttachmentsModule } from './biblio_attachments/biblio_attachments.module';
 
 @Module({
   imports: [
@@ -47,7 +48,8 @@ import { FilesModule } from './files/files.module';
     ItemsModule,
     BiblioRelationsModule,
     SearchBibliosModule,
-    FilesModule
+    FilesModule,
+    BiblioAttachmentsModule
   ]
 })
 export class AppModule {}

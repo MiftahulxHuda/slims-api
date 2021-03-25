@@ -16,14 +16,14 @@ export class Biblio_Attachment extends BaseEntity {
   @PrimaryColumn()
   biblio_id: number;
 
-  @Column()
+  @PrimaryColumn()
   file_id: number;
 
   @Column()
   placement: Placement;
 
   @Column()
-  acess_type: AccessType;
+  access_type: AccessType;
 
   @Column()
   access_limit: string;
