@@ -14,16 +14,19 @@ import { Loan_History } from 'src/loan_histories/loan_history.entity';
 import { Search_Biblio } from 'src/search_biblios/search_biblio.entity';
 import { Serial } from 'src/serials/serial.entity';
 import { CreateBiblioDto } from './dto/create-biblio.dto';
+import { DbGenService } from 'src/utils/DbGenService';
 
 @Injectable()
-export class BibliosService {
+export class BibliosService extends DbGenService<Biblio> {
   constructor(
     @InjectRepository(BiblioRepository)
     private biblioRepository: BiblioRepository,
-  ) { }
+  ) {
+    super(biblioRepository);
+  }
 
-  async getBiblios(): Promise<Biblio[]> {
-    return this.biblioRepository.getBiblios();
+  async getBiblios(filter, sort, pagination): Promise<Biblio[]> {
+    return this.biblioRepository.getBiblios(filter, sort, pagination);
   }
 
   async getBiblioById(biblio_id: number): Promise<Biblio> {

@@ -8,9 +8,9 @@ export class MST_Place extends BaseEntity {
   @Column()
   place_name: string;
 
-  @Column()
+  @Column({ select: false })
   input_date: string;
 
-  @Column()
+  @Column({ select: false })
   last_update: string;
 }

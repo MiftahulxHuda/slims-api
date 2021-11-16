@@ -1,22 +1,39 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { MSTAuthorRepository } from './mst_author.repository';
 import { MST_Author } from './mst_author.entity';
-import { CreateMSTAuthorDto } from './dto/create-mst-author.dto';
+import { DbGenService } from 'src/utils/DbGenService';
 
 @Injectable()
-export class MSTAuthorsService {
+export class MSTAuthorsService extends DbGenService<MST_Author>  {
     constructor(
         @InjectRepository(MSTAuthorRepository)
         private MSTAuthorRepository: MSTAuthorRepository,
-    ) { }
-
-    async getMSTAuthorsByName(author_name: string): Promise<MST_Author[]> {
-        return this.MSTAuthorRepository.getMSTAuthorsByName(author_name);
+    ) {
+        super(MSTAuthorRepository);
     }
 
-    async createMSTAuthor(createMSTAuthorDto: CreateMSTAuthorDto): Promise<MST_Author> {
-        return this.MSTAuthorRepository.createMSTAuthor(createMSTAuthorDto);
+    async createMSTAuthor(createMSTAuthorDto): Promise<any> {
+        const findMSTAuthorByAuthorName = await this.findOne({ author_name: createMSTAuthorDto.author_name });
+        if (findMSTAuthorByAuthorName) {
+            throw new BadRequestException('Author is exist');
+        }
+
+        return await this.create(createMSTAuthorDto);
+    }
+
+    async updateMSTAuthorByAuthorId(author_id, updateMSTAuthorDto): Promise<any> {
+        const findMSTAuthorByAuthorId = await this.findOne({ author_id: author_id });
+        if (findMSTAuthorByAuthorId) {
+            if (findMSTAuthorByAuthorId.author_name != updateMSTAuthorDto.author_name) {
+                const findMSTAuthorByAuthorName = await this.findOne({ author_name: updateMSTAuthorDto.author_name });
+                if (findMSTAuthorByAuthorName) {
+                    throw new BadRequestException('Author is exist');
+                }
+            }
+        }
+
+        return await this.updateOne({ author_id }, updateMSTAuthorDto);
     }
 }

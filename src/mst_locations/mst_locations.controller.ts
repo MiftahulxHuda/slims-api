@@ -1,10 +1,15 @@
-import { Controller, Get, UseGuards, Query } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
+import { Controller, Get, UseGuards, Query, ValidationPipe, UsePipes, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiQuery, ApiParam } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
 import { MSTLocationsService } from './mst_locations.service';
 import { MST_Location } from './mst_location.entity';
+import { SortPipe } from 'src/utils/SortPipe.pipe';
+import { GetLocationFilterDto } from './dto/get-location-filter.dto';
+import { Like } from 'typeorm';
+import { CreateMSTLocationDto } from './dto/create-mst-location';
+import { UpdateMSTLocationDto } from './dto/update-mst-location';
 
 // @ApiBearerAuth()
 @ApiTags('mst-location')
@@ -14,10 +19,61 @@ export class MSTLocationsController {
   constructor(
     private MSTLocationsService: MSTLocationsService
   ) { }
-
-  @Get('location_name/:location_name')
+  
+  @Get()
+  @ApiQuery({ name: 'take', required: false })
+  @ApiQuery({ name: 'skip', required: false })
+  @ApiQuery({ name: 'sort', required: false })
   @ApiQuery({ name: 'location_name', required: false })
-  getMSTLocationsByLocationName(@Query('location_name') location_name: string): Promise<MST_Location[]> {
-    return this.MSTLocationsService.getMSTLocationsByLocationName(location_name);
+  @UsePipes(new SortPipe())
+  getLocations(
+    @Query() filterDto: GetLocationFilterDto,
+    @Query('take') take: number,
+    @Query('skip') skip: number
+  ): Promise<MST_Location[]> {
+    delete filterDto["take"];
+    delete filterDto["skip"];
+
+    const sort = filterDto.sort;
+
+    let filter = {}
+
+    if (filterDto.location_name) {
+      filter["location_name"] = Like(`%${filterDto.location_name}%`)
+    }
+
+    return this.MSTLocationsService.findAll(filter, sort, {
+      take: take,
+      skip: skip,
+    });
+  }
+
+  @Get(':location_id')
+  @ApiParam({ name: 'location_id', required: false })
+  getMSTLocationByLocationId(@Param('location_id') location_id: string): Promise<MST_Location> {
+    return this.MSTLocationsService.findOneWithoutNotFound({ location_id });
+  }
+
+  @Post()
+  @UsePipes(new ValidationPipe({ transform: true }))
+  createLocation(
+    @Body() createMSTLocationDto: CreateMSTLocationDto,
+  ): Promise<MST_Location> {
+    return this.MSTLocationsService.createMSTLocation(createMSTLocationDto);
+  }
+
+  @Put(':location_id')
+  @UsePipes(new ValidationPipe({ transform: true }))
+  updateMSTLocationByLocationId(
+    @Param('location_id') location_id: string,
+    @Body() updateMSTLocationDto: UpdateMSTLocationDto,
+  ): Promise<any> {
+    return this.MSTLocationsService.updateMSTLocationByLocationId(location_id, updateMSTLocationDto);
+  }
+
+  @Delete(':location_id')
+  @ApiParam({ name: 'location_id', required: false })
+  deleteMSTLocationById(@Param('location_id') location_id: string): Promise<any> {
+    return this.MSTLocationsService.deleteOne({ location_id });
   }
 }

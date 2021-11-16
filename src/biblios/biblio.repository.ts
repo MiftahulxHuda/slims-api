@@ -15,7 +15,7 @@ import { CreateBiblioDto } from './dto/create-biblio.dto';
 @EntityRepository(Biblio)
 export class BiblioRepository extends Repository<Biblio> {
 
-  async getBiblios(): Promise<Biblio[]> {
+  async getBiblios(filter, sort, pagination): Promise<Biblio[]> {
     const query = await this.createQueryBuilder("biblio")
       .select("biblio.*")
       .addSelect("mst_gmd.gmd_name AS gmd_name")

@@ -24,10 +24,17 @@ import { BiblioRelationsModule } from './biblio_relations/biblio_relations.modul
 import { SearchBibliosModule } from './search_biblios/search_biblios.module';
 import { FilesModule } from './files/files.module';
 import { BiblioAttachmentsModule } from './biblio_attachments/biblio_attachments.module';
+import { MSTPlacesModule } from './mst_places/mst_places.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeOrmConfig),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../..', 'uml'),
+      serveRoot: "/uml",
+    }),
     AuthModule,
     BibliosModule,
     MSTAuthorsModule,
@@ -49,7 +56,8 @@ import { BiblioAttachmentsModule } from './biblio_attachments/biblio_attachments
     BiblioRelationsModule,
     SearchBibliosModule,
     FilesModule,
-    BiblioAttachmentsModule
+    BiblioAttachmentsModule,
+    MSTPlacesModule
   ]
 })
 export class AppModule {}

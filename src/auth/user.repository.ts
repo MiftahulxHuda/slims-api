@@ -11,9 +11,9 @@ export class UserRepository extends Repository<User> {
     async validateUserPassword(authCredentialsDto: AuthCredentialsDto): Promise<string> {
         const { username, password } = authCredentialsDto;
         const user = await this.findOne({ username });
-        const groups = phpUnserialize(user.groups);
-
+        
         if (user && await user.validatePassword(password)) {
+            const groups = phpUnserialize(user.groups);
             if (groups.length > 0) {
                 return user.username
             } else {

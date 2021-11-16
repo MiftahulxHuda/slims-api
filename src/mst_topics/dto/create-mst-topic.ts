@@ -1,20 +1,20 @@
 import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { AuthorityType } from '../mst_author.entity';
 import { CustomDate } from 'src/utils/custom-date';
+import { TopicType } from '../mst_topic.entity';
 
-export class CreateMSTAuthorDto {
+export class CreateMSTTopicDto {
     @ApiProperty()
     @IsNotEmpty()
-    author_name: string;
+    topic: string;
 
-    @ApiProperty({ enum: ['p', 'o', 'c']})
-    @IsNotEmpty()
-    authority_type: AuthorityType;
+    @ApiProperty({ enum: ['t', 'g', 'n', 'tm', 'gr', 'oc'] })
+    topic_type: TopicType;
 
-    @IsNotEmpty()
+    @ApiProperty()
+    auth_list: string;
+    
     input_date: string = new CustomDate().getDate();
 
-    @IsNotEmpty()
     last_update: string = new CustomDate().getDate();
 }
